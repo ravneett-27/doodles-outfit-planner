@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doodle's Outfit Planner</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="site-shell">
+        <header class="topbar">
+            <a class="brand" href="#" data-page-link="home">Doodle's</a>
+            <nav class="topnav" aria-label="Primary">
+                <button class="nav-link active" data-page-link="home">Home</button>
+                <button class="nav-link" data-page-link="wardrobe">Wardrobe</button>
+                <button class="nav-link" data-page-link="builder">Outfit Builder</button>
+                <button class="nav-link" data-page-link="outfits">Saved Outfits</button>
+            </nav>
+            <label class="search-bar" for="global-search">
+                <span>Search</span>
+                <input id="global-search" type="search" placeholder="Search wardrobe by name, color, or category">
+            </label>
+        </header>
+
+        <main>
+            <section class="page active" id="page-home" aria-labelledby="home-title">
+                <section class="hero-card">
+                    <div class="hero-copy">
+                        <p class="eyebrow">Final Project Build</p>
+                        <h1 id="home-title">Plan outfits from your own wardrobe, not from memory.</h1>
+                        <p class="hero-text">
+                            Add clothing pieces, filter your collection, mix items into looks, and save outfit ideas
+                            locally so they stay with you after refresh.
+                        </p>
+                        <div class="hero-actions">
+                            <button class="btn btn-primary" data-page-link="wardrobe" data-scroll-target="wardrobe-form-panel">Add Your First Item</button>
+                            <button class="btn btn-secondary" data-page-link="builder">Build an Outfit</button>
+                        </div>
+                    </div>
+
+                    <div class="hero-panel">
+                        <div class="stat-card">
+                            <span class="stat-label">Wardrobe Pieces</span>
+                            <strong class="stat-value" id="home-item-count">0</strong>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-label">Saved Outfits</span>
+                            <strong class="stat-value" id="home-outfit-count">0</strong>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-label">Top Palette</span>
+                            <strong class="stat-value" id="home-color-highlight">-</strong>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="dashboard-grid">
+                    <article class="panel">
+                        <div class="panel-heading">
+                            <div>
+                                <p class="eyebrow">Quick Preview</p>
+                                <h2>Recent wardrobe additions</h2>
+                            </div>
+                            <button class="text-link" data-page-link="wardrobe">Open wardrobe</button>
+                        </div>
+                        <div id="recent-items" class="mini-list empty-state-slot"></div>
+                    </article>
+
+                    <article class="panel">
+                        <div class="panel-heading">
+                            <div>
+                                <p class="eyebrow">Saved Looks</p>
+                                <h2>Latest outfit drafts</h2>
+                            </div>
+                            <button class="text-link" data-page-link="outfits">View all outfits</button>
+                        </div>
+                        <div id="recent-outfits" class="mini-list empty-state-slot"></div>
+                    </article>
+                </section>
+            </section>
+
+            <section class="page" id="page-wardrobe" aria-labelledby="wardrobe-title">
+                <div class="page-header">
+                    <div>
+                        <p class="eyebrow">Wardrobe Manager</p>
+                        <h1 id="wardrobe-title">Your clothing archive</h1>
+                    </div>
+                    <button class="btn btn-primary" data-scroll-target="wardrobe-form-panel">Add New Item</button>
+                </div>
+
+                <section class="panel controls-panel">
+                    <div class="control-group">
+                        <label for="category-filter">Filter by category</label>
+                        <select id="category-filter">
+                            <option value="all">All categories</option>
+                            <option value="Tops">Tops</option>
+                            <option value="Bottoms">Bottoms</option>
+                            <option value="Shoes">Shoes</option>
+                            <option value="Accessories">Accessories</option>
+                            <option value="Outerwear">Outerwear</option>
+                        </select>
+                    </div>
+
+                    <div class="control-group">
+                        <label for="sort-items">Sort items</label>
+                        <select id="sort-items">
+                            <option value="newest">Newest first</option>
+                            <option value="oldest">Oldest first</option>
+                            <option value="name">Name A-Z</option>
+                            <option value="category">Category</option>
+                        </select>
+                    </div>
+
+                    <div class="stats-inline">
+                        <span id="wardrobe-summary">0 items</span>
+                    </div>
+                </section>
+
+                <div class="form-layout wardrobe-layout">
+                    <section>
+                        <section id="wardrobe-grid" class="cards-grid" aria-live="polite"></section>
+                    </section>
+
+                    <aside class="panel side-note" id="wardrobe-form-panel">
+                        <p class="eyebrow">Wardrobe Entry</p>
+                        <h2>Add or edit a clothing item</h2>
+
+                        <form id="item-form" class="stack-form">
+                            <input id="item-id" name="itemId" type="hidden">
+
+                            <div class="control-group">
+                                <label for="item-name">Item name</label>
+                                <input id="item-name" name="name" type="text" placeholder="Oversized Linen Shirt" required>
+                            </div>
+
+                            <div class="split-fields">
+                                <div class="control-group">
+                                    <label for="item-category">Category</label>
+                                    <select id="item-category" name="category" required>
+                                        <option value="">Select category</option>
+                                        <option value="Tops">Tops</option>
+                                        <option value="Bottoms">Bottoms</option>
+                                        <option value="Shoes">Shoes</option>
+                                        <option value="Accessories">Accessories</option>
+                                        <option value="Outerwear">Outerwear</option>
+                                    </select>
+                                </div>
+
+                                <div class="control-group">
+                                    <label for="item-color">Color</label>
+                                    <input id="item-color" name="color" type="text" placeholder="Cream" required>
+                                </div>
+                            </div>
+
+                            <div class="split-fields">
+                                <div class="control-group">
+                                    <label for="item-season">Season</label>
+                                    <select id="item-season" name="season">
+                                        <option value="All Season">All Season</option>
+                                        <option value="Spring">Spring</option>
+                                        <option value="Summer">Summer</option>
+                                        <option value="Fall">Fall</option>
+                                        <option value="Winter">Winter</option>
+                                    </select>
+                                </div>
+
+                                <div class="control-group">
+                                    <label for="item-vibe">Style vibe</label>
+                                    <input id="item-vibe" name="vibe" type="text" placeholder="Minimal, sporty, cozy">
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <label for="item-notes">Notes</label>
+                                <textarea id="item-notes" name="notes" rows="4" placeholder="Great with denim, fits oversized, best for layering..."></textarea>
+                            </div>
+
+                            <div class="actions-row">
+                                <button class="btn btn-primary" type="submit">Save Item</button>
+                                <button class="btn btn-secondary" id="cancel-edit" type="button">Clear Form</button>
+                            </div>
+                        </form>
+
+                        <ul class="check-list">
+                            <li>Add, edit, and delete wardrobe items</li>
+                            <li>Filter and search your clothing collection</li>
+                            <li>Select multiple pieces to build outfits</li>
+                            <li>Save outfits in a dedicated section</li>
+                            <li>Persist wardrobe data with localStorage</li>
+                        </ul>
+                    </aside>
+                </div>
+            </section>
+
+            <section class="page" id="page-builder" aria-labelledby="builder-title">
+                <div class="page-header">
+                    <div>
+                        <p class="eyebrow">Outfit Builder</p>
+                        <h1 id="builder-title">Mix pieces into a look</h1>
+                    </div>
+                </div>
+
+                <div class="builder-grid">
+                    <section class="panel">
+                        <div class="panel-heading">
+                            <div>
+                                <p class="eyebrow">Step 1</p>
+                                <h2>Select clothing items</h2>
+                            </div>
+                        </div>
+                        <div id="builder-selection" class="cards-grid compact-grid" aria-live="polite"></div>
+                    </section>
+
+                    <section class="panel builder-sidebar">
+                        <div class="panel-heading">
+                            <div>
+                                <p class="eyebrow">Step 2</p>
+                                <h2>Name and save the outfit</h2>
+                            </div>
+                        </div>
+
+                        <form id="outfit-form" class="stack-form">
+                            <div class="control-group">
+                                <label for="outfit-name">Outfit name</label>
+                                <input id="outfit-name" name="outfitName" type="text" placeholder="Weekend Coffee Run" required>
+                            </div>
+
+                            <div class="control-group">
+                                <label for="outfit-occasion">Occasion</label>
+                                <select id="outfit-occasion" name="occasion">
+                                    <option value="Casual">Casual</option>
+                                    <option value="Work">Work</option>
+                                    <option value="Formal">Formal</option>
+                                    <option value="Night Out">Night Out</option>
+                                    <option value="Travel">Travel</option>
+                                </select>
+                            </div>
+
+                            <div class="control-group">
+                                <label for="outfit-notes">Style notes</label>
+                                <textarea id="outfit-notes" name="notes" rows="4" placeholder="Soft neutrals, layered textures, comfortable shoes..."></textarea>
+                            </div>
+
+                            <div class="selection-preview">
+                                <p class="selection-title">Selected pieces</p>
+                                <ul id="selected-items-list" class="selected-list"></ul>
+                            </div>
+
+                            <div class="actions-row">
+                                <button class="btn btn-primary" type="submit">Save Outfit</button>
+                                <button class="btn btn-secondary" id="reset-builder" type="button">Reset</button>
+                            </div>
+                        </form>
+                    </section>
+                </div>
+            </section>
+
+            <section class="page" id="page-outfits" aria-labelledby="outfits-title">
+                <div class="page-header">
+                    <div>
+                        <p class="eyebrow">Saved Outfits</p>
+                        <h1 id="outfits-title">Your planned looks</h1>
+                    </div>
+                    <button class="btn btn-secondary" data-page-link="builder">Create another outfit</button>
+                </div>
+
+                <section id="outfits-grid" class="cards-grid" aria-live="polite"></section>
+            </section>
+
+        </main>
+    </div>
+</body>
+</html>
