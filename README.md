@@ -31,4 +31,7 @@ Doodle's Outfit Planner is a Vanilla JavaScript web app for organizing wardrobe 
 
 This project was created for a final JavaScript assignment focused on DOM manipulation, event handling, forms, data handling, and persistent user interaction.
 =======
+<<<<<<< HEAD
 
+=======
+>>>>>>> 3b0e0a2782787fe8ba230d91066d9ff21b07211c
