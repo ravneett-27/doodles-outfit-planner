@@ -1,0 +1,143 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R 5 0 R 7 0 R 9 0 R] /Count 4 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 11 0 R >> >> /Contents 4 0 R >>
+endobj
+4 0 obj
+<< /Length 826 >>
+stream
+0 G
+0.8 w
+BT /F1 24 Tf 50 760 Td (Doodle''s Outfit Planner) Tj ET
+BT /F1 14 Tf 50 734 Td (Low-Fidelity Wireframe Prototype) Tj ET
+BT /F1 18 Tf 50 700 Td (Screen 1: Home Dashboard) Tj ET
+BT /F1 11 Tf 50 80 Td (Purpose: overview of wardrobe stats, recent items, and recent outfits.) Tj ET
+45 675 520 70 re S
+BT /F1 12 Tf 60 715 Td (Home Dashboard) Tj ET
+60 620 120 20 re S
+190 620 120 20 re S
+320 620 120 20 re S
+450 620 90 20 re S
+60 430 480 165 re S
+BT /F1 16 Tf 75 575 Td (Hero area with welcome message and buttons) Tj ET
+80 455 190 28 re S
+285 455 190 28 re S
+60 260 235 140 re S
+305 260 235 140 re S
+BT /F1 12 Tf 75 370 Td (Recent wardrobe items) Tj ET
+BT /F1 12 Tf 320 370 Td (Recent saved outfits) Tj ET
+75 330 205 22 re S
+75 295 205 22 re S
+75 260 205 22 re S
+320 330 205 22 re S
+320 295 205 22 re S
+320 260 205 22 re S
+endstream
+endobj
+5 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 11 0 R >> >> /Contents 6 0 R >>
+endobj
+6 0 obj
+<< /Length 784 >>
+stream
+0 G
+0.8 w
+BT /F1 24 Tf 50 760 Td (Doodle''s Outfit Planner) Tj ET
+BT /F1 14 Tf 50 734 Td (Low-Fidelity Wireframe Prototype) Tj ET
+BT /F1 18 Tf 50 700 Td (Screen 2: Wardrobe Manager) Tj ET
+BT /F1 11 Tf 50 80 Td (Purpose: users can add, edit, delete, search, and filter clothing items.) Tj ET
+45 675 520 70 re S
+BT /F1 12 Tf 60 715 Td (Wardrobe Manager) Tj ET
+60 620 150 26 re S
+225 620 150 26 re S
+390 620 150 26 re S
+60 220 305 375 re S
+BT /F1 12 Tf 75 575 Td (Saved clothing item cards) Tj ET
+80 505 120 70 re S
+215 505 120 70 re S
+80 415 120 70 re S
+215 415 120 70 re S
+390 220 150 375 re S
+BT /F1 12 Tf 405 575 Td (Add or edit item form) Tj ET
+405 525 120 26 re S
+405 485 120 26 re S
+405 445 120 26 re S
+405 405 120 26 re S
+405 330 120 52 re S
+405 270 55 30 re S
+470 270 55 30 re S
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 11 0 R >> >> /Contents 8 0 R >>
+endobj
+8 0 obj
+<< /Length 771 >>
+stream
+0 G
+0.8 w
+BT /F1 24 Tf 50 760 Td (Doodle''s Outfit Planner) Tj ET
+BT /F1 14 Tf 50 734 Td (Low-Fidelity Wireframe Prototype) Tj ET
+BT /F1 18 Tf 50 700 Td (Screen 3: Outfit Builder) Tj ET
+BT /F1 11 Tf 50 80 Td (Purpose: users select multiple pieces, name the outfit, add notes, and save it.) Tj ET
+45 675 520 70 re S
+BT /F1 12 Tf 60 715 Td (Outfit Builder) Tj ET
+60 220 305 400 re S
+BT /F1 12 Tf 75 600 Td (Selectable wardrobe pieces) Tj ET
+80 520 75 75 re S
+170 520 75 75 re S
+260 520 75 75 re S
+80 425 75 75 re S
+170 425 75 75 re S
+260 425 75 75 re S
+390 220 150 400 re S
+BT /F1 12 Tf 405 600 Td (Outfit form and selected list) Tj ET
+405 545 120 24 re S
+405 500 120 24 re S
+405 415 120 65 re S
+405 370 120 24 re S
+405 335 120 24 re S
+405 275 55 30 re S
+470 275 55 30 re S
+endstream
+endobj
+9 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 11 0 R >> >> /Contents 10 0 R >>
+endobj
+10 0 obj
+<< /Length 574 >>
+stream
+0 G
+0.8 w
+BT /F1 24 Tf 50 760 Td (Doodle''s Outfit Planner) Tj ET
+BT /F1 14 Tf 50 734 Td (Low-Fidelity Wireframe Prototype) Tj ET
+BT /F1 18 Tf 50 700 Td (Screen 4: Saved Outfits) Tj ET
+BT /F1 11 Tf 50 80 Td (Purpose: users review saved outfit ideas and remove looks they no longer need.) Tj ET
+45 675 520 70 re S
+BT /F1 12 Tf 60 715 Td (Saved Outfits) Tj ET
+60 220 480 400 re S
+BT /F1 12 Tf 75 600 Td (Saved outfit cards with pieces and delete action) Tj ET
+80 500 200 90 re S
+320 500 200 90 re S
+80 380 200 90 re S
+320 380 200 90 re S
+80 260 200 90 re S
+320 260 200 90 re S
+endstream
+endobj
+11 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+xref
+0 12
+0000000000 65535 f 
+0000000009 00000 n `n0000000058 00000 n `n0000000133 00000 n `n0000000260 00000 n `n0000001137 00000 n `n0000001264 00000 n `n0000002099 00000 n `n0000002226 00000 n `n0000003048 00000 n `n0000003176 00000 n `n0000003802 00000 n `ntrailer
+<< /Size 12 /Root 1 0 R >>
+startxref
+3873
+%%EOF

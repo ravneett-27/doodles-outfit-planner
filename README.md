@@ -23,6 +23,10 @@ Doodle's Outfit Planner is a Vanilla JavaScript web app for organizing wardrobe 
 2. Open `index.html` in a browser.
 3. Start adding clothing items and creating outfits.
 
+## Prototype Deliverables
+
+- Low-fi wireframes: `prototypes/low-fi-wireframes.html`
+
 ## Live Site
 
 - View site at https://ravneett-27.github.io/doodles-outfit-planner/
@@ -30,8 +34,3 @@ Doodle's Outfit Planner is a Vanilla JavaScript web app for organizing wardrobe 
 ## Project Notes
 
 This project was created for a final JavaScript assignment focused on DOM manipulation, event handling, forms, data handling, and persistent user interaction.
-=======
-<<<<<<< HEAD
-
-=======
->>>>>>> 3b0e0a2782787fe8ba230d91066d9ff21b07211c
