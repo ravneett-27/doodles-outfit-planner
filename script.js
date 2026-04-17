@@ -1,5 +1,7 @@
+// Persistent storage key used for the app's local data.
 const STORAGE_KEY = "doodles-outfit-planner";
 
+// Starter content shown on first load before the user saves their own data.
 const defaultState = {
     items: [
         {
@@ -36,8 +38,10 @@ const defaultState = {
     outfits: []
 };
 
+// Main app data loaded from localStorage or from the starter defaults.
 const state = loadState();
 
+// UI-only state for page navigation, filters, and current outfit selection.
 const ui = {
     currentPage: "home",
     searchTerm: "",
@@ -51,6 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
     renderApp();
 });
 
+// Connects buttons, forms, filters, and search inputs to app behavior.
 function bindEvents() {
     document.querySelectorAll("[data-page-link]").forEach((button) => {
         button.addEventListener("click", (event) => {
@@ -96,6 +101,7 @@ function bindEvents() {
     document.getElementById("reset-builder").addEventListener("click", resetBuilderForm);
 }
 
+// Reads saved wardrobe and outfit data from localStorage.
 function loadState() {
     const saved = localStorage.getItem(STORAGE_KEY);
 
@@ -115,10 +121,12 @@ function loadState() {
     }
 }
 
+// Writes the current app state back to localStorage after each change.
 function saveState() {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
 }
 
+// Shows one page section at a time and updates the active nav button.
 function showPage(pageName) {
     ui.currentPage = pageName;
 
@@ -137,6 +145,7 @@ function showPage(pageName) {
     window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
+// Re-renders every visible part of the app after state changes.
 function renderApp() {
     renderDashboard();
     renderWardrobe();
@@ -144,6 +153,7 @@ function renderApp() {
     renderOutfits();
 }
 
+// Updates the home dashboard stats and recent activity previews.
 function renderDashboard() {
     document.getElementById("home-item-count").textContent = state.items.length;
     document.getElementById("home-outfit-count").textContent = state.outfits.length;
@@ -166,6 +176,7 @@ function renderDashboard() {
         : emptyMarkup("No saved outfits yet. Build one from the outfit builder.");
 }
 
+// Builds the wardrobe card list based on search, filter, and sort settings.
 function renderWardrobe() {
     const wardrobeGrid = document.getElementById("wardrobe-grid");
     const filteredItems = getFilteredItems();
@@ -207,6 +218,7 @@ function renderWardrobe() {
     });
 }
 
+// Builds the selectable item list and the current outfit preview.
 function renderBuilder() {
     const builderSelection = document.getElementById("builder-selection");
     const selectedItemsList = document.getElementById("selected-items-list");
@@ -234,6 +246,7 @@ function renderBuilder() {
         : `<li class="empty-line">No pieces selected yet.</li>`;
 }
 
+// Displays all saved outfits and wires up outfit delete actions.
 function renderOutfits() {
     const outfitsGrid = document.getElementById("outfits-grid");
 
@@ -276,6 +289,7 @@ function renderOutfits() {
     });
 }
 
+// Creates a new wardrobe item or updates an existing one from the form.
 function handleItemSubmit(event) {
     event.preventDefault();
 
@@ -308,6 +322,7 @@ function handleItemSubmit(event) {
     scrollToSection("wardrobe-grid");
 }
 
+// Saves the currently selected outfit and its details.
 function handleOutfitSubmit(event) {
     event.preventDefault();
 
@@ -333,6 +348,7 @@ function handleOutfitSubmit(event) {
     showPage("outfits");
 }
 
+// Loads an existing item's values back into the wardrobe form for editing.
 function startEditItem(itemId) {
     const item = state.items.find((entry) => entry.id === itemId);
 
@@ -352,6 +368,7 @@ function startEditItem(itemId) {
     scrollToSection("wardrobe-form-panel");
 }
 
+// Removes an item and also removes it from any outfits that used it.
 function deleteItem(itemId) {
     state.items = state.items.filter((item) => item.id !== itemId);
     state.outfits = state.outfits
@@ -363,12 +380,14 @@ function deleteItem(itemId) {
     renderApp();
 }
 
+// Removes a saved outfit from the state.
 function deleteOutfit(outfitId) {
     state.outfits = state.outfits.filter((outfit) => outfit.id !== outfitId);
     saveState();
     renderApp();
 }
 
+// Adds or removes a clothing item from the current outfit selection.
 function toggleSelectedItem(itemId) {
     if (ui.selectedItemIds.has(itemId)) {
         ui.selectedItemIds.delete(itemId);
@@ -379,18 +398,21 @@ function toggleSelectedItem(itemId) {
     renderBuilder();
 }
 
+// Clears the wardrobe form so the user can start a fresh item entry.
 function resetItemForm() {
     document.getElementById("item-form").reset();
     document.getElementById("item-id").value = "";
     document.getElementById("item-season").value = "All Season";
 }
 
+// Clears the outfit form and all currently selected items.
 function resetBuilderForm() {
     document.getElementById("outfit-form").reset();
     ui.selectedItemIds.clear();
     renderBuilder();
 }
 
+// Returns wardrobe items after applying search, category filtering, and sort order.
 function getFilteredItems() {
     const filteredBySearch = state.items.filter((item) => {
         const searchable = `${item.name} ${item.category} ${item.color} ${item.vibe} ${item.notes}`.toLowerCase();
@@ -418,10 +440,12 @@ function getFilteredItems() {
     });
 }
 
+// Preserves the original created date when an item is edited.
 function getExistingCreatedAt(itemId) {
     return state.items.find((item) => item.id === itemId)?.createdAt ?? Date.now();
 }
 
+// Finds the most common clothing color for the dashboard summary.
 function getTopColor() {
     if (!state.items.length) {
         return "-";
@@ -437,6 +461,7 @@ function getTopColor() {
     return topColor.charAt(0).toUpperCase() + topColor.slice(1);
 }
 
+// Small reusable HTML card used in the home page preview sections.
 function miniCardMarkup(title, meta) {
     return `
         <article class="mini-card">
@@ -446,10 +471,12 @@ function miniCardMarkup(title, meta) {
     `;
 }
 
+// Reusable fallback UI shown when a section has no content to display.
 function emptyMarkup(message) {
     return `<div class="empty-state">${escapeHtml(message)}</div>`;
 }
 
+// Maps color names to display colors for item and builder swatches.
 function getColorToken(colorName) {
     const normalized = colorName.trim().toLowerCase();
     const colorMap = {
@@ -469,6 +496,7 @@ function getColorToken(colorName) {
     return colorMap[normalized] || "#d9c7f2";
 }
 
+// Escapes user text before inserting it into HTML.
 function escapeHtml(value) {
     return String(value)
         .replaceAll("&", "&amp;")
@@ -478,6 +506,7 @@ function escapeHtml(value) {
         .replaceAll("'", "&#39;");
 }
 
+// Smoothly scrolls to a section after navigation or an edit action.
 function scrollToSection(sectionId) {
     const section = document.getElementById(sectionId);
 

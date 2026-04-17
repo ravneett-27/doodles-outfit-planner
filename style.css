@@ -1,3 +1,4 @@
+/* Shared design tokens for colors, spacing, and reusable sizing */
 :root {
     --bg: #fff9f1;
     --bg-soft: #fff2de;
@@ -16,6 +17,7 @@
     --radius-sm: 12px;
 }
 
+/* Base reset and global page styling */
 *,
 *::before,
 *::after {
@@ -49,6 +51,7 @@ a {
     cursor: pointer;
 }
 
+/* Main app shell and sticky top navigation */
 .site-shell {
     width: min(1200px, calc(100% - 2rem));
     margin: 0 auto;
@@ -122,6 +125,7 @@ a {
     background: var(--surface);
 }
 
+/* Generic page visibility and card container styling */
 .page {
     display: none;
     animation: lift 0.25s ease;
@@ -132,6 +136,7 @@ a {
     display: block;
 }
 
+/* Home dashboard layout and stat styling */
 .hero-card,
 .panel,
 .card {
@@ -218,6 +223,7 @@ a {
     font-family: "Fraunces", serif;
 }
 
+/* Shared layouts for dashboard, wardrobe form area, and builder */
 .dashboard-grid,
 .form-layout,
 .builder-grid {
@@ -271,6 +277,7 @@ a {
     align-items: end;
 }
 
+/* Shared form controls and action button styling */
 .control-group,
 .stack-form,
 .search-bar,
@@ -350,6 +357,7 @@ a {
     color: #b23b3b;
 }
 
+/* Card styles used for wardrobe items and saved outfits */
 .cards-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -408,6 +416,7 @@ a {
     gap: 0.5rem;
 }
 
+/* Outfit builder selection styles */
 .selector-card {
     width: 100%;
     text-align: left;
@@ -457,6 +466,7 @@ a {
     border-bottom: 1px solid var(--line);
 }
 
+/* Small reusable list cards and empty states */
 .mini-list {
     display: grid;
     gap: 0.8rem;
@@ -509,6 +519,7 @@ a {
     }
 }
 
+/* Responsive rules for tablet and mobile layouts */
 @media (max-width: 960px) {
     .topbar,
     .hero-card,
